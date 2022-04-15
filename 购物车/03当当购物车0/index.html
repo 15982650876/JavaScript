@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>当当购物车</title>
+    <link rel="stylesheet" href="./css/cart.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="./image/dd_logo.jpg" alt="logo">
+        </div>
+        <div class="cart-list">
+            <table>
+                <tr>
+                    <th>商品图片</th>
+                    <th>商品信息</th>
+                    <th>商价</th>
+                    <th>数量</th>
+                    <th>总价</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                    <td><img src="./image/shoppingBg_03.jpg" alt=""></td>
+                    <td>javascript高级编程</td>
+                    <td>￥68.90</td>
+                    <td><input type="button" name="minus" value="-" disabled><input type="text" name="amount" value="0"><input
+                            type="button" name="plus" value="+"></td>
+                    <td>￥0</td>
+                    <td> <a href="#">移入收藏</a><br><a href="#">删除</a></td>
+                </tr>
+                <tr>
+                    <td><img src="./image/shoppingBg_06.jpg" alt=""></td>
+                    <td>css高级编程</td>
+                    <td>￥58.90</td>
+                    <td><input type="button" name="minus" value="-" disabled><input type="text" name="amount" value="0"><input
+                            type="button" name="plus" value="+"></td>
+                    <td>￥0</td>
+                    <td> <a href="#">移入收藏</a><br><a href="#">删除</a></td>
+                </tr>
+            </table>
+            <h2>商品总价:<span>￥0</span></h2>
+        </div>
+    </div>
+
+    <script src="./js/cart.js"></script>
+</body>
+
+</html>

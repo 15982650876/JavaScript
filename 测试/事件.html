@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body>div{
+            width: 500px;
+            height: 500px;
+            background-color: skyblue;
+            margin: auto;
+            position: relative;
+        }
+        body>div>div{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display: block;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div>
+
+        </div>
+    </div>
+    <script>
+        function test(){
+            let divv=document.querySelector('body>div')
+            let divvv=document.querySelector('body>div>div')
+            //console.log(divvv)
+             divv.onmouseout =function(e){
+                // console.log(1)
+                 divvv.style.display='none'
+                 }
+             divv.onmouseover =function(e){
+               // console.log(2)
+                  divvv.style.display='block'
+                 }
+
+                divv.onmousemove=function(e){
+                    e= e|| window.event
+                     a=e.offsetX-50;
+                     b=e.offsetY-50;
+                   // console.log(a,b)
+                    divvv.style.top=`${b}px`
+                    divvv.style.left=`${a}px`
+                    if(a<00){
+                        //divvv.style.left=`${400}px`
+                        console.log('超出')
+                        divvv.style.left=`0px`
+                        divvv.style.top=`0px`
+                    }
+                   if(a>400){
+                    console.log('超出')
+                        divvv.style.top=`0px`
+                        divvv.style.left=`400px`
+                   }
+                //    if(b<00){
+                //         //divvv.style.left=`${400}px`
+                //         console.log('超出')
+                //         divvv.style.left=`0px`
+                //         divvv.style.top=`0px`
+                //     }
+                //    if(a>400){
+                //     console.log('超出')
+                //         divvv.style.top=`400px`
+                //         divvv.style.left=`0px`
+                //    }
+                   
+            }
+
+          // }
+            
+        }
+        test()
+    </script>
+</body>
+</html>

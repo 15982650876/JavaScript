@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        div{
+            width: 150px;
+            background-color: rgb(88, 91, 172);
+        }
+        ul{
+            width: 100%;
+            text-align: center;
+            background-color: pink;
+            cursor: pointer;
+        }
+        h5{
+            text-align: center;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .active{
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h5>用户管理</h5>
+        <ul>
+            <li>用户列表</li>
+            <li>添加用户</li>
+        </ul>
+        <h5>账户管理</h5>
+            <ul>
+                <li>修改用户</li>
+                <li>删除用户</li>
+            </ul>
+    </div>
+    <script src="./jquery-3.6.0.min.js"></script>
+    <script>
+        $('h5').on('click',function(){
+            console.log( $(this).next())
+            $(this).next().stop().slideToggle()
+        })
+        $('li').on('click',function(){
+            $('li').removeClass('active')
+            $(this).addClass('active')
+        })
+    </script>
+    
+</body>
+</html>

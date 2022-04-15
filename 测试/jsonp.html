@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class list {
+            constructor(url) {
+                this.url = url
+            }
+
+            getscr() {
+                let src = document.createElement('script')
+                src.setAttribute('src', this.url)
+                document.body.appendChild(src)
+                console.log(window)
+                window.callback = function (date) {
+                    console.log(date)
+                }
+
+            }
+        }
+        let list1 = new list('http://10.7.178.115:8088/api/jsonp/list')
+        list1.getscr()
+    </script>
+</body>
+
+</html>

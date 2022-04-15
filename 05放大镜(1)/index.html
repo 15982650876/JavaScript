@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>放大镜</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div class="container" id="glass1">
+        <div class="left-box">
+            <div class="show-box">
+                <img src="./image/show_1.jpg" alt="">
+                <div class="mask"></div>
+            </div>
+            <ul>
+                <li class="active"><img src="./image/small_1.jpg" alt=""></li>
+                <li><img src="./image/small_2.jpg" alt=""></li>
+                <li><img src="./image/small_3.jpg" alt=""></li>
+                <li><img src="./image/small_4.jpg" alt=""></li>
+            </ul>
+        </div>
+
+        <div class="right-box">
+            <img src="./image/big_1.jpg" alt="">
+        </div>
+    </div>
+
+
+
+    <div class="container" id="glass2">
+        <div class="left-box">
+            <div class="show-box">
+                <img src="./image/show_1.jpg" alt="">
+                <div class="mask"></div>
+            </div>
+            <ul>
+                <li class="active"><img src="./image/small_1.jpg" alt=""></li>
+                <li><img src="./image/small_2.jpg" alt=""></li>
+                <li><img src="./image/small_3.jpg" alt=""></li>
+                <li><img src="./image/small_4.jpg" alt=""></li>
+            </ul>
+        </div>
+
+        <div class="right-box">
+            <img src="./image/big_1.jpg" alt="">
+        </div>
+    </div>
+
+    <script src="./js/glass1.js"></script>
+    <script>
+        let glass1 = new Glass('#glass1')
+        glass1.onGlass()
+        glass1.onTab()
+
+        let glass2 = new Glass('#glass2')
+        glass2.onGlass()
+        glass2.onTab()
+    </script>
+
+</body>
+
+</html>

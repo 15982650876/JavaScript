@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var students = [
+                {number:1001, name:'jack', score:98,gender:'男'},
+                {number:1002, name:'rose', score:95,gender:'女'},
+                {number:1003, name:'小丽', score:85,gender:'女'},
+            ]
+        // console.log(students[0].score)
+        let sum=0
+        for(let i=0;i<students.length;i++){
+            sum+=students[i].score
+        }
+        console.log(sum)
+        let newstu=students.filter(function(item){
+            return item.score>sum/students.length;
+        })
+        console.log(newstu)
+        let isok=students.some(function(item){
+            return item.score<60
+        })
+        console.log(isok)
+    </script>
+</body>
+</html>     

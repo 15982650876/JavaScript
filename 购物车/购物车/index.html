@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>当当购物车</title>
+    <link rel="stylesheet" href="./css/cart.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="./image/dd_logo.jpg" alt="logo">
+            <button type="button" id="deleteall">删除全部</button>
+        </div>
+        <div class="cart-list">
+            <!-- 动态渲染table表格,通过商品数组 -->
+            <table class="cart-table"></table>
+            <h2>商品总价:<span class="total-price">￥0</span></h2>
+        </div>
+        <div class="cart-add">
+            <form action="http://www.baidu.com">
+                <input type="text" name="name" placeholder="请输入商品名称"><br>
+                <p></p>
+                <input type="text" name="price" placeholder="请输入商品价格"><br>
+                <p></p>
+                <input type="text" name="num" placeholder="请输入商品数量"><br>
+                <p></p>
+                <input type="text" name="url" placeholder="请输入商品图片地址"><br>
+                <p></p>
+                <button name="add-btn" type="button" class="add-btn">添加商品</button>
+            </form>
+        </div>
+    </div>
+
+   <script src="./js/index.js"></script>
+</body>
+
+</html>

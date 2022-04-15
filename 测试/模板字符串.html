@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 模板字符串练习
+    将学生数组动态渲染成表格tabel形式显示到页面
+     var students = [
+         {number:1001, name:'jack', score:98,gender:'男'},
+         {number:1002, name:'rose', score:95,gender:'女'},
+         {number:1003, name:'小丽', score:85,gender:'女'},
+     ] -->
+     
+     <script>
+         var students = [
+         {number:1001, name:'jack', score:98,gender:'男'},
+         {number:1002, name:'rose', score:95,gender:'女'},
+         {number:1003, name:'小丽', score:85,gender:'女'},
+     ]
+         var stu=`
+         <table border="0" cellspacing="1" cellpadding="40">
+            <tr>
+                <td>学号</td>
+                <td>姓名</td>
+                <td>成绩</td>
+                <td>性别</td>
+            </tr>`
+            for(i=0;i<students.length;i++){
+                stu+=` <tr>
+                <td>${students[i].number}</td>
+                <td>${students[i].name}</td>
+                <td>${students[i].score}</td>
+                <td>${students[i].gender}</td>
+            </tr>`
+            }
+            stu+=`</table>`
+        
+            
+        
+        
+        document.write(stu)
+     </script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr=[98,78,89,77,69,59,85,100,93,81,85,66,45,33,22]
+        var temparr = [[],[],[],[],[],[],[],[],[]]
+        for(var i=0;i<arr.length;i++){
+           // console.log(arr[i])
+            if(arr[i]==100){
+                temparr[0].push(100)
+            }else if(arr[i]>=90){
+                temparr[1].push(arr[i])
+            }
+            else if(arr[i]>=80){
+                temparr[2].push(arr[i])
+            }
+            else if(arr[i]>=70){
+                temparr[3].push(arr[i])
+            }
+            else if(arr[i]>=60){
+                temparr[4].push(arr[i])
+            }
+            else if(arr[i]>=50){    
+                temparr[5].push(arr[i])
+            }
+            else if(arr[i]>=40){
+                temparr[6].push(arr[i])
+            }
+            else if(arr[i]>=30){
+                temparr[7].push(arr[i])
+            }
+            else if(arr[i]>=20){
+                temparr[8].push(arr[i])
+            }
+        }
+        for(var j=0;j<temparr.length;j++){
+          //console.log(temparr[j])
+        }
+    //     2. 已知学生成绩数组scoreArray成绩分别为[89,78,69,89,90,69,81]写程序去掉重复的成绩
+    //    输出为: [89,78,69,90,81]
+    //     提示: 方法一: 利用splice + 双重for循环
+    //           方法二: 利用 indexOf
+
+        var scoreArray=[89,78,69,89,69,81,89,90,90,90]
+        var  scor=[]
+           for(var i=0;i<scoreArray.length;i++){
+            if(scor.indexOf(scoreArray[i]) == -1){
+                scor.push(scoreArray[i])
+            }
+           }console.log(scor)
+                
+
+            
+        
+    </script>
+</body>
+</html>

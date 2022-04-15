@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包应用</title>
+    <style>
+        * {
+          
+            padding: 0;
+            margin: 0;
+        }
+        ul,
+        li {
+            list-style: none;
+        }
+
+        div {
+            width: 800px;
+            margin: 100px auto;
+        }
+
+        ul {
+            width: 800px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        ul>li>img {
+            width: 200px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>
+                <h2>明星1</h2>
+                <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fblog%2F202108%2F03%2F20210803190924_e2620.thumb.1000_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1652259720&t=7b9d639e0028babb9e53916f2f93ec93"
+                    alt=""><br>
+                <button>点赞 0</button>
+            </li>
+            <li>
+                <h2>明星2</h2>
+                <img src="https://img2.baidu.com/it/u=2635344432,2699362262&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=600"
+                    alt=""><br>
+                <button>点赞 0</button>
+            </li>
+            <li>
+                <h2>明星3</h2>
+                <img src="https://img1.baidu.com/it/u=1491488703,577934765&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=692"
+                    alt=""><br>
+                <button>点赞 0</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const butonEles = document.querySelectorAll('button')
+
+        for (var i = 0; i < butonEles.length; i++) {
+            // function fn() {
+                let num = 0     
+                butonEles[i].onclick = function () {
+                    this.innerHTML = `点赞 ${++num}`
+                }
+            // }
+            // fn()
+
+            // (function(){
+            //     var num = 0
+            //     butonEles[i].onclick = function () {
+            //         this.innerHTML = `点赞 ${++num}`
+            //     }
+            // })()
+        }
+    </script>
+</body>
+
+</html>

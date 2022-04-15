@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 300px;
+            margin: auto;
+            font-size: 15px;
+        }
+        div>input{
+            width: 200px;
+            outline: 0;
+            border: 0px;
+            border-bottom:solid 1px black;
+            vertical-align: middle;
+        }
+        div>ul>li{
+          list-style: none;
+          line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" value=""> 
+        <button>确定</button>
+        <ul>
+        </ul>
+    </div>
+    <script>
+        function show(){
+            let bts=document.querySelector('div>button')
+            let inputs=document.querySelector('div>input')
+            let uls=document.querySelector('div>ul')
+            bts.onclick=function(){
+                let lis=document.createElement('li')
+                 lis.innerHTML=inputs.value
+               //console.log(lis)
+               uls.appendChild(lis)
+               inputs.value=''
+                lis.onclick=function(){
+                    //console.log(this)
+                    this.remove()
+                }
+            }
+        }
+        show()
+
+    </script>
+</body>
+</html>

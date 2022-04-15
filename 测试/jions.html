@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 1. 保存字符串: '今天是二阶段第四周第二天学习' 到localStorage中持久存储
+    // 2. 保存用户对象 {username:'jack',password:123} 到localStorage
+    // 3. 获取localStorage中保存的用户名显示到页面
+    // 4. 保存商品列表数组数据到localStorage中
+    //      let productList = [
+    //            {
+    //                 id: 1001, //商品序号
+    //                 name: 'js高级编程', //商品名
+    //                 url: 'https://img1.baidu.com/it/u=454394458,1998378568&fm=253&fmt=auto&app=138&f=JPEG', //商品图片
+    //                 price: 68.90, //商品价格
+    //                 num: 0, //商品数量
+    //                 singlePrice: 0, //商品总价=数量*价格    
+    //                 state: false //状态
+    //             },
+    //             {
+    //                 id: 1002,
+    //                 name: 'css高级编程',
+    //                 url: 'https://img1.baidu.com/it/u=337910016,91561566&fm=26&fmt=auto',
+    //                 price: 55.89,
+    //                 num: 0,
+    //                 singlePrice: 0,
+    //                 state: false //状态
+    //             },
+    //             {
+    //                 id: 1003,
+    //                 name: 'html高级编程',
+    //                 url: 'https://img1.baidu.com/it/u=337910016,91561566&fm=26&fmt=auto',
+    //                 price: 45.89,
+    //                 num: 0,
+    //                 singlePrice: 0,
+    //                 state: false //状态
+    //             }
+    //         ]
+    // 5. 获取localStorage中保存的的商品数组，遍历显示
+    // 6. 构造一个商品对象,添加到localStorage商品数组中
+    //      如:
+    //       let product = {
+    //                 id: 1004,
+    //                 name: 'vue高级编程',
+    //                 url: 'https://img1.baidu.com/it/u=337910016,91561566&fm=26&fmt=auto',
+    //                 price: 85.89,
+    //                 num: 0,
+    //                 singlePrice: 0,
+    //                 state: false //状态
+    //             }
+    // 7. 查找localStorage商品数组中，id为1002的商品，修改其数量为10,再保存到localStorage中持久存储  
+        function test(){
+            localStorage.setItem('str','今天是二阶段第四周第二天学习')
+            console.log(localStorage)
+        }
+        // test()
+        function test2(){
+            let json={username:'jack',password:123}
+            let newjson=JSON.stringify(json)
+            localStorage.setItem('user',newjson)
+           console.log(localStorage)
+        }
+        //test2()
+        function test3(){
+            let productList = [
+               {
+                    id: 1001, //商品序号
+                    name: 'js高级编程', //商品名
+                    url: 'https://img1.baidu.com/it/u=454394458,1998378568&fm=253&fmt=auto&app=138&f=JPEG', //商品图片
+                    price: 68.90, //商品价格
+                    num: 0, //商品数量
+                    singlePrice: 0, //商品总价=数量*价格    
+                    state: false //状态
+                },
+                {
+                    id: 1002,
+                    name: 'css高级编程',
+                    url: 'https://img1.baidu.com/it/u=337910016,91561566&fm=26&fmt=auto',
+                    price: 55.89,
+                    num: 0,
+                    singlePrice: 0,
+                    state: false //状态
+                },
+                {
+                    id: 1003,
+                    name: 'html高级编程',
+                    url: 'https://img1.baidu.com/it/u=337910016,91561566&fm=26&fmt=auto',
+                    price: 45.89,
+                    num: 0,
+                    singlePrice: 0,
+                    state: false //状态
+                }
+            ]
+            let newstr=JSON.stringify(productList)
+            // console.log(newstr);
+            localStorage.setItem('sp',newstr)
+            console.log(localStorage)
+        }
+        //test3()
+        function test4(){
+            let sz=localStorage.getItem('sp')
+        //  console.log(sz);
+        let newsz=JSON.parse(sz)
+        // console.log(newsz);
+        newsz.forEach(element => {
+           console.log(element); 
+        });
+
+        }
+       // test4()
+        function test5(){
+            let product = {
+                    id: 1004,
+                    name: 'vue高级编程',
+                    url: 'https://img1.baidu.com/it/u=337910016,91561566&fm=26&fmt=auto',
+                    price: 85.89,
+                    num: 0,
+                    singlePrice: 0,
+                    state: false //状态
+                }
+                let sz=localStorage.getItem('sp')
+                // let newsz=JSON.parse(sz)
+                // newsz.push(product)
+                // console.log(newsz);
+                // let newsz1=JSON.stringify(newsz)
+                // localStorage.removeItem('sp')
+                // localStorage.setItem('sp',newsz1)
+            console.log(sz)
+
+        }
+          test5()
+        function test6(){
+            let sz=localStorage.getItem('sp')
+             let newsz=JSON.parse(sz)
+                //console.log(newsz)
+            newsz.forEach(element => {
+                if(element.id==1002){
+                    element.num=10
+                }
+            });
+            //console.log(newsz);
+            let newsz1=JSON.stringify(newsz)
+                localStorage.removeItem('sp')
+                localStorage.setItem('sp',newsz1)
+             console.log(localStorage)
+
+        }
+       // test6()
+    </script>
+</body>
+</html>

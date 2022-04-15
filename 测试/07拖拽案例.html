@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽案例</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+    <!-- 
+        拖拽案例
+           鼠标移入区块，当按下时，移动移标，区块随鼠标一起移动，当按键抬起时，停止移动
+             1. 鼠标按在区块上时
+             2. 鼠标坐标位置赋值给区块，鼠标移动区块随着动
+             3. 鼠标抬起区块停止移动
+
+     -->
+</head>
+
+<body>
+    <div></div>
+
+    <script>
+        const box = document.querySelector('div')
+        //鼠标按在区块上时
+        box.onmousedown = function (e) {
+            e = e || window.event
+            let t = e.offsetY
+            let l = e.offsetX
+            //鼠标坐标位置赋值给区块，鼠标移动区块随着动
+            document.onmousemove = function (e) {
+                e = e || window.event
+                let x = e.clientX - l
+                let y = e.clientY - t
+                //盒子移光标移动
+                box.style.left = x + 'px'
+                box.style.top = y + 'px'
+            }
+            //鼠标抬起
+            document.onmouseup = function(){
+                document.onmousemove = null
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

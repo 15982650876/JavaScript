@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            position: relative;
+         
+        }
+        @keyframes run {
+            0%{
+                
+            }
+            100%{
+                
+            }            
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div id="divv" style=" color: rgb(123, 143, 58);
+    font-size: 100px;
+    position: absolute; "> -->
+
+    </div>
+    <script>
+        var i = 1;
+        var mycars = new Array()
+        setInterval(function () {
+            var r = Math.floor(Math.random() * 255)
+            var g = Math.floor(Math.random() * 255)
+            var b = Math.floor(Math.random() * 255)
+            
+            let = Math.floor(Math.random() * 95)
+            var hig = Math.floor(Math.random() * 80)
+            i++;
+            document.write(`
+            <div id="divv` + i + `" style=" 
+            color:` + ;
+            position: absolute;
+            left:` +
+                let +'%' + `;
+            top:` + hig + '%' + `;
+            animation: run 5s infinite;
+            ">
+                 ·
+              </div>
+            `)
+            mycars[i] = document.getElementById('divv' + i + '')
+            console.log(mycars[i]) 
+            var pos = parseInt(mycars[i].style.top) ;
+            setInterval(function frame(){
+                    if (pos == 90) {
+                        clearInterval(this);
+                    } else {
+                        pos++;
+                        mycars[i].style.top = pos+ "%";
+                        // console.log(mycars[i].style.top)
+                    }
+                 //console.log(pos)
+            }, 1000);
+        }, 1000)
+    </script>
+</body>
+
+</html>

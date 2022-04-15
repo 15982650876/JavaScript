@@ -1,0 +1,281 @@
+<!-- let productList = [{
+    id: 1001,
+    name: 'javascript高级编程',
+    price: 45.89,
+    num:1,
+    url: './image/shoppingBg_03.jpg'
+    },
+    {
+    id: 1002,
+    name: 'css高级编程',
+    price: 35.89,
+    num:2,
+    url: './image/shoppingBg_06.jpg'
+    },
+    {
+    id: 1003,
+    name: 'html高级编程',
+    price: 25.89,
+    num:3,
+    url: './image/shoppingBg_06.jpg'
+    },
+    {
+    id: 1004,
+    name: 'vue高级编程',
+    price: 65.89,
+    num:2,
+    url: './image/shoppingBg_06.jpg'
+    }
+    ]
+    1. 动态渲染到页面上
+    2. 计算商品总价
+    price*num 一个商品
+     -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        body>div {
+            width: 1200px;
+            margin: 0 auto;
+            font-size: 12px;
+        }
+
+        body>div>div {
+            float: left;
+            width: 290px;
+            border: solid 1px pink;
+            text-align: center;
+        }
+
+        body>div>div>img {
+            width: 200px;
+            height: 200px;
+            vertical-align: bottom;
+            display: block;
+            margin: auto;
+        }
+
+        body>div>div>span {
+            display: block;
+            line-height: 40px;
+        }
+
+        .span1 {
+            font-size: 15px;
+            color: aqua;
+        }
+
+        .span2 {
+            font-size: 18px;
+            color: pink;
+        }
+
+        .btu {
+            float: right;
+            background-color: rgb(236, 47, 82);
+            border: 0px;
+        }
+
+        .jia {
+            width: 25px;
+            background-color: aquamarine;
+        }
+
+        .jian {
+            width: 25px;
+            background-color: aquamarine;
+        }
+        input{
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div>
+            <img src="./img/OIP-C9.jpg" alt="" class="image">
+            <span>
+                <span>书名:</span>
+                <span class="span1">javascript高级编程</span>
+            </span>
+            <span>
+                <span>价格:</span>
+                <span class="span2">45.89</span>
+            </span>
+            <button class="jia">+</button>
+            <button class="btu"> 加入购物车</button>
+            <button class="jian">-</button>
+        </div>
+        <div>
+            <img src="./img/OIP-C9.jpg" alt="" class="image">
+            <span>
+                <span>书名:</span>
+                <span class="span1">javascript高级编程</span>
+            </span>
+            <span>
+                <span>价格:</span>
+                <span class="span2">45.89</span>
+            </span>
+            <button class="jia">+</button>
+            <button class="btu"> 加入购物车</button>
+            <button class="jian">-</button>
+        </div>
+        <div>
+            <img src="./img/OIP-C9.jpg" alt="" class="image">
+            <span>
+                <span>书名:</span>
+                <span class="span1">javascript高级编程</span>
+            </span>
+            <span>
+                <span>价格:</span>
+                <span class="span2">45.89</span>
+            </span>
+            <button class="jia">+</button>
+            <button class="btu"> 加入购物车</button>
+            <button class="jian">-</button>
+        </div>
+        <div>
+            <img src="./img/OIP-C9.jpg" alt="" class="image">
+            <span>
+                <span>书名:</span>
+                <span class="span1">javascript高级编程</span>
+            </span>
+            <span>
+                <span>价格:</span>
+                <span class="span2">45.89</span>
+            </span>
+            <button class="jia">+</button>
+            <button class="btu"> 加入购物车</button>
+            <button class="jian">-</button>
+        </div>
+    </div>
+    <div style="width: 1000px; margin: auto;">
+    id:
+        <input type="text" id="inpuid" disabled>
+     书名：
+    <input type="text" id="inputext" disabled>
+    数量：
+    <input type="text" id="inpusum" disabled>
+    单价：
+    <input type="text" id="inpudj" disabled>
+    总价：
+    <input type="text" id="inpuzj" disabled>
+    总金额
+    <input type="text" id="inpuzje" disabled>
+    </div>
+   
+    <script>
+        let productList = [{
+                id: 1001,
+                name: 'javascript高级编程',
+                price: 45.89,
+                num: 0,
+                url: './img/OIP-C0.jpg'
+            },
+            {
+                id: 1002,
+                name: 'css高级编程',
+                price: 35.89,
+                num: 0,
+                url: './img/OIP-C1.jpg'
+            },
+            {
+                id: 1003,
+                name: 'html高级编程',
+                price: 25.89,
+                num: 0,
+                url: './img/OIP-C2.jpg'
+            },
+            {
+                id: 1004,
+                name: 'vue高级编程',
+                price: 65.89,
+                num: 0,
+                url: './img/OIP-C3.jpg'
+            }
+        ]
+        let image = document.getElementsByClassName('image')
+        let spanname = document.getElementsByClassName('span1')
+        let spanjg = document.getElementsByClassName('span2')
+        let btns = document.getElementsByClassName('btu')
+        let jia = document.getElementsByClassName('jia')
+        let jian = document.getElementsByClassName('jian')
+        let ida=document.getElementById('inpuid')
+        let sm=document.getElementById('inputext')
+        let sl=document.getElementById('inpusum')
+        let dj=document.getElementById('inpudj')
+        let zj=document.getElementById('inpuzj')
+        let zje=document.getElementById('inpuzje')
+        let sum = {};
+        let tmp=0
+        for (let i = 0; i < productList.length; i++) {
+            image[i].src = `${productList[i].url}`
+            spanname[i].innerHTML = `${productList[i].name}`
+            spanjg[i].innerHTML = `${productList[i].price}`
+           
+            btns[i].onclick = function () {
+                productList[i].num++;
+                sum[productList[i].name] = productList[i].num * productList[i].price
+                ida.value=productList[i].id;
+                sm.value=productList[i].name;
+                sl.value=productList[i].num;
+                dj.value=productList[i].price;
+                zj.value=sum[productList[i].name].toFixed(2)
+                tmp+=sum[productList[i].name]
+                zje.value=tmp.toFixed(2) ;
+            }
+            jia[i].onclick = function () {
+                productList[i].num++;
+                sum[productList[i].name] = productList[i].price * productList[i].num
+                console.log((i + 1) + '个' + productList[i].num)
+                ida.value=productList[i].id;
+                sm.value=productList[i].name;
+                sl.value=productList[i].num;
+                dj.value=productList[i].price;
+                zj.value=sum[productList[i].name].toFixed(2) 
+                tmp+=productList[i].price
+                zje.value=tmp.toFixed(2) ;
+                console.log(sum)
+            }
+            jian[i].onclick = function () {
+                if (productList[i].num != 0) {
+                    productList[i].num--;
+                    sum[productList[i].name] = productList[i].price * productList[i].num
+                    console.log((i + 1) + '个' + productList[i].num)
+                    console.log(sum)
+                    ida.value=productList[i].id;
+                    sm.value=productList[i].name;
+                    sl.value=productList[i].num;
+                    dj.value=productList[i].price;
+                    zj.value=sum[productList[i].name].toFixed(2) 
+                    tmp-=productList[i].price
+                     zje.value=tmp.toFixed(2) ;
+                }
+            }
+           
+        }
+       
+    </script>
+
+
+
+</body>
+
+</html>

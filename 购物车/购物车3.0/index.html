@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>当当购物车</title>
+    <link rel="stylesheet" href="./css/cart.css">
+    
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="./image/dd_logo.jpg" alt="logo">
+            <a>添加商品</a>
+        </div>
+        <div class="cart-list">
+             <!-- 动态渲染table表格,通过商品数组 -->
+        </div>
+        <h5>商品总价:<span class="total-price">￥0</span></h5>
+        <div class="cart-add">
+            <form>
+                <input type="text" name="name" placeholder="请输入商品名称"><br>
+                <input type="text" name="price" placeholder="请输入商品价格"><br>
+                <input type="text" name="num" placeholder="请输入商品数量"><br>
+                <input type="text" name="url" placeholder="请输入商品图片地址"><br>
+                <button class="add-btn">添加商品</button>
+                <button type="reset">取消</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

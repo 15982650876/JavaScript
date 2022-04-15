@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery对象与dom节点对象</title>
+</head>
+
+<body>
+    <div class="d1">元素一</div>
+    <div class="d2">元素二</div>
+
+    <script src="./jquery-3.6.0.min.js"></script>
+    <script>
+        function test1() {
+            //原生js打印div节点对象
+            const divEle = document.querySelector('div')
+            console.log(divEle);
+            divEle.innerHTML = '更改元素内容'
+
+        }
+        // test1()
+        function test2() {
+            let divJq = $('div')
+            console.log(divJq);
+        }
+        // test2()
+
+        function test3() {
+            //jquery对象->dom节点对象
+            let domObj = $('div')[0]
+
+            console.log(domObj)
+
+            // const divEle = document.querySelector('div')
+            // console.log($(divEle));
+
+        }
+        test3()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: url(./img/bg.jpg) no-repeat;
+        }
+        body>div{
+            margin: auto;
+            width: 400px;
+            height: 300px;
+            border: 1px solid #000;
+            text-align: center;
+        }
+        h5{
+           font-size: 20px;
+            
+        }
+        input[type="text"]{
+            display: block;
+            width: 200px;
+            height: 20px;
+            margin:auto;
+         
+            border: 0px;
+        }
+        input[type="password"]{
+            display: block;
+            width: 200px;
+            height: 20px;
+            margin: auto;
+            
+            border: 0px;
+        }
+        button[ type="submit"]{
+            display: block;
+            width: 200px;
+            height: 30px;
+            margin: auto;
+            
+            background-color: rgb(129, 129, 201);
+        }
+        button[ type="button"]{
+            display: block;
+            width: 200px;
+            height: 30px;
+            margin: auto;
+            margin-top: 10px;
+            background-color: rgb(129, 129, 201);
+
+        }
+        p{
+            display: inline;
+            opacity: 0;
+            color: red;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="denglu">
+        <h5>后台管理中心</h5>
+        <form action="">
+            <input type="text" placeholder="登录账号">
+            <p>账户为空</p>
+            <input type="password" name="" id="" placeholder="登录密码">
+            <p style="display: block;">密码为空</p>
+            <p>密码格式不对，要开头字母大写至少...</p>
+            <button type="submit">登录</button>
+            <button type="button">注册</button>
+        </form>
+    </div>
+
+
+    <div class="cart-add">
+        <h5>注册</h5>
+        <form name="from">
+            <input type="text" placeholder="注册账号" name="user">
+            <p>账户为空</p>
+            <input type="password" name="password"placeholder="注册密码">
+            <p >密码为空</p>
+            
+            <button type="submit" name="sub">确定</button>
+        </form>
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+</html>

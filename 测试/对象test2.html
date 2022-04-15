@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        var studentArray = [
+            { num: 1001, name: 'jack', sex: '男', score: 98 },
+            { num: 1002, name: 'rose', sex: '女', score: 95 },
+            { num: 1003, name: 'lilei', sex: '女', score: 85 }
+        ]
+        var studentArray2 = [
+            { num: 1001, name: 'jack', sex: '男', score: 98 },
+            { num: 1002, name: 'rose', sex: '女', score: 95 },
+            { num: 1003, name: 'lilei', sex: '女', score: 85 }
+        ]
+        //求总成绩
+        let sum=studentArray.reduce(function(s,item,index){
+            return s+item.score
+        },0)
+        console.log(sum)
+
+        //取小数位数:  数值.toFixed(位数)
+        var avg = sum/studentArray.length
+        console.log('平均分是 ',avg.toFixed(2)); 
+
+
+        //找成绩大于平均分的所有学生
+        studentArray.forEach(function(item){
+            if(item.score > avg){
+                console.log(item);
+            }
+        })                                 
+        //找rose
+        studentArray.forEach(function(item){
+            if(item.name=='rose'){
+                console.log(item)
+            }
+        })
+        //减10分
+        let newarr=studentArray2.map(function(item){
+            item.score= item.score-10;
+             return item
+        })
+        console.log(studentArray)
+        console.log(newarr)
+        //是否女生
+        let issex=studentArray.some(function(item){
+            return item.sex=='女'
+        })
+        console.log(issex)
+
+    </script>
+</body>
+</html>

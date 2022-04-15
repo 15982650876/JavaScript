@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            text-align: center;
+            outline: 0;
+        }
+    </style>
+</head>
+<body>
+    你距离现在活了：
+    <input type="text" name="" id="year" disabled>年
+    <input type="text" name="" id="mon" disabled>月
+    <input type="text" name="" id="day" disabled>日
+    <input type="text" name="" id="hour" disabled>时
+    <input type="text" name="" id="mi" disabled>分
+    <input type="text" name="" id="s" disabled>秒
+    <script>
+        
+        function howday(year,mon,day,hour,mi,s){
+        let date=new Date()
+        //console.log(date)
+        let birthday=new Date(`${year}-${mon}-${day}`)
+        //console.log(birthday)
+        let datemin=date.getTime();
+        let birthdaymin=birthday.getTime();
+        //console.log(datemin,birthdaymin)
+        //年
+        let howyear=(datemin-birthdaymin)/(1000*60*60*24*365)
+        let newhowyear=Math.floor(howyear)
+        //月
+        let howmon=(datemin-birthdaymin-newhowyear*1000*60*60*24*365)/(1000*60*60*24*30)
+        let newhowmon=Math.floor(howmon)
+       // console.log(newhowmon);
+        //日
+        let howday=(datemin-birthdaymin-newhowyear*1000*60*60*24*365-newhowmon*1000*60*60*24*30)/(1000*60*60*24*1)
+        let newhowday=Math.floor(howday)
+      //  console.log(newhowday);
+        //时
+        let howhour=(datemin-birthdaymin-newhowyear*1000*60*60*24*365-newhowmon*1000*60*60*24*30-newhowday*1000*60*60*24)/(1000*60*60)
+        let newhowhour=Math.floor(howhour)
+       // console.log(newhowhour);
+        //分
+        let howmi=(datemin-birthdaymin-newhowyear*1000*60*60*24*365-newhowmon*1000*60*60*24*30-newhowday*1000*60*60*24-newhowhour*1000*60*60)/(1000*60)
+        let newhowmi=Math.floor(howmi)
+       // console.log(newhowmi);
+        //秒
+        let hows=(datemin-birthdaymin-newhowyear*1000*60*60*24*365-newhowmon*1000*60*60*24*30-newhowday*1000*60*60*24-newhowhour*1000*60*60-newhowmi*1000*60)/(1000)
+        let newhows=Math.floor(hows)
+       // console.log(newhows);
+        let yearinput=document.getElementById('year')
+        yearinput.value=newhowyear
+        let moninput=document.getElementById('mon')
+        moninput.value=newhowmon
+        let dayinput=document.getElementById('day')
+        dayinput.value=newhowday
+        let hourinput=document.getElementById('hour')
+        hourinput.value=newhowhour
+        let miinput=document.getElementById('mi')
+        miinput.value=newhowmi
+        let sinput=document.getElementById('s')
+        sinput.value=newhows
+        // document.write(`
+        // 你距离现在活了：${newhowyear}年${newhowmon}个月${newhowday}天${newhowhour}时${newhowmi}分${newhows}秒
+        // `)
+        }
+       function time(year,mon,day,hour,mi,s){
+        setInterval(function(){
+            howday(year,mon,day,hour,mi,s)
+        },1000)
+       }
+        // time();
+
+      
+       
+        
+    </script>
+</body>
+</html>

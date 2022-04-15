@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*1.已知邮箱字符串'zhousir028@qq.com'写正则匹配该邮箱字符串是否符合邮箱格式?
+        邮箱格式要求: 1. 必须包含@符号
+                        2. @符号左右两边可以字母或数字或字母数字组合
+                        3. 以.com结尾
+
+           2. 已知密码字符串'Zhousir12345' 写正则匹配密码是否符合密码强度规则?
+             密码强度规则: 1. 必须是大写字母开头
+                          2. 密码包含字母和数字
+                          3. 至少8位
+           3. 已知手机字符串'18012345678' 匹配中国手机号是否正则
+              中国手机号规则: 1. 以1开头
+                             2.第二位是 3或5或8
+                             3. 总共11位
+           4. 用正则表达式匹配的是中国的电话号码，以0开头，然后是两个数字，然后是一个连字号“-”，最后是8个数字
+           5. 将字符串中单词is替换成 'are'字符串如下:
+                'He is a boy, This is a dog.Where is she?'*/
+
+
+        function test1(){
+            let stu='zhousio028@qq.com'
+            let reg=/[0-9a-zA-Z]+@[0-9A-Za-z]+\.com$/
+            console.log(reg.test(stu))
+        }
+       // test1()
+        function test2(){
+            let stu='Zhousir12345'
+            let reg=/^[A-Z][0-9a-zA-Z]{7,}/
+            console.log(reg.test(stu))
+        }
+      //  test2()
+      function test3(){
+          let stu='18012345678'
+          let reg=/^1[358]\d{9}/
+          console.log(reg.test(stu))
+      }
+      test3()
+      function test4(){
+          let stu='18012345678'
+
+      }
+    </script>
+    
+</body>
+</html>

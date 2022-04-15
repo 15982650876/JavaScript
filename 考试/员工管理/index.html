@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/cart.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="cart-list">
+            <table>
+                <tr>
+                    <th>员工编号</th>
+                    <th>员工名称</th>
+                    <th>员工部门</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                 
+                </tr>
+            </table>
+           
+        </div>
+        <div class="cart-add">
+            <form>
+                <input type="text" name="name" placeholder="员工编号"><br>
+                <input type="text" name="price" placeholder="员工姓名"><br>
+                <input type="text" name="num" placeholder="员工部门"><br>
+                <button class="add-btn">提交</button>
+                
+            </form>
+        </div>
+    </div>
+    <script>
+function show(){
+    const preant = document.querySelector('.cart-list')
+    let str = `<table>
+                <tr>
+                    <th>员工编号</th>
+                    <th>员工名称</th>
+                    <th>员工部门</th>
+                    <th>操作</th>
+                </tr>`
+    //设置数组持久保存
+    let prouductListStr = localStorage.getItem('list')
+    let priolist = JSON.parse(prouductListStr) || []
+         let list = priolist.map(item => {
+        return ` <tr>
+                    <td>${item.name}</td>
+                    <td>${item.price}</td>
+                    <td>${item.num}</td>
+                    <td><a href="#" class="del" data-index="${item.id}">删除</a></td>
+                </tr>`
+    })
+    let trStr = list.join('') //数组转字符串
+    str = str + trStr + '</table>'
+    // console.log(str)
+    preant.innerHTML = str
+}
+
+show()
+function add() {
+    let from = document.querySelector('form')
+    from.addEventListener('click', function (e) {
+        e = e || window.Event
+        let target = e.target || e.srcElement
+        e.preventDefault()
+            const addBtn = document.querySelector('.add-btn')
+            const nameInput = document.querySelector('input[name="name"]')
+            const priceInput = document.querySelector('input[name="price"]')
+            const numInput = document.querySelector('input[name="num"]')
+            let name = nameInput.value
+            let price = priceInput.value
+            let num = numInput.value
+        //判断格式
+        if (target.getAttribute('class') == "add-btn") {
+                let proudct = {
+                    name,
+                    price,
+                    num,
+                }
+                let list = localStorage.getItem('list') //拿
+                let newlist = JSON.parse(list) || [] //转
+                newlist.push(proudct) //接
+                let newprodct = JSON.stringify(newlist)
+                localStorage.setItem('list', newprodct)
+            show()
+        }
+      
+    })
+
+}
+add()
+function shangchu() {
+    const preant = document.querySelector('.cart-list')
+    preant.addEventListener('click', function (e) {
+        e = e || window.Event
+        let target = e.target || e.srcElement
+        if (target.getAttribute('class') == 'del') {
+            let id = target.getAttribute('data-index')
+            let list = localStorage.getItem('list') //拿
+            let newlist = JSON.parse(list) || [] //转
+            let product = newlist.findIndex(item => item.id == id)
+            // console.log(product)
+            newlist.splice(product, 1)
+            let newprodct = JSON.stringify(newlist) //转
+            localStorage.setItem('list', newprodct) //设
+            show()
+        }
+    })
+}
+shangchu()
+        
+    </script>
+</body>
+</html>

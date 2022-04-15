@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body>div{
+            width: 200px;
+            height: 200px;
+            margin: auto;
+            /* background-color: skyblue; */
+            border: solid 1px black;
+            display: flex;
+            flex-wrap: wrap;
+            /* overflow: hidden; */
+           pointer-events: none;
+           
+          
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+    <script>
+        let bigdiv=document.querySelector('body>div')//外面最大盒子
+        //生成随机数函数
+        function getrandom(m,n){
+          let tmp=Math.max(m,n)
+            n=Math.min(m,n)
+            m=tmp
+          return math= Math.random()*(m-n)+n
+        }
+        //生成随机颜色函数
+        function getcolor(){
+            let r= getrandom(0,251)
+            let g= getrandom(0,251)
+            let b= getrandom(0,251)
+            return `rgb(${r},${g},${b})`
+        }
+        //拖拽函数
+        function test2(){
+            this.onmousedown=function(){
+                // console.log(window.getComputedStyle(this).width);
+                // let a=parseInt(window.getComputedStyle(this).width)/2
+                // let b=parseInt(window.getComputedStyle(this).height)/2
+                document.body.onmousemove=function(e){
+                        e=e||window.event
+                        x = e.clientX;
+                        y = e.clientY;
+                        console.log(x,y)
+                        this.style.top=`${y}px`
+                        this.style.left=`${x}px`
+                }
+            }
+            this.onmouseup=function(){
+                document.body.onmousemove=null
+            }
+            // divs[i].onmouseout=function(){
+               
+            // }
+
+        }
+        
+    
+        var tmp=0
+        function adddiv(){//创建div节点
+           
+            let divs=document.createElement('div')
+            bigdiv.appendChild(divs)
+           
+            tmp+=getrandom(10,150)
+            if(tmp>=180){
+                console.log(tmp)
+                divs.style.width=`${200-tmp}px`
+           }
+           else
+            divs.style.width=`${getrandom(10,150)}px`
+           
+            divs.style.height=`${getrandom(10,150)}px`
+            
+            divs.style.backgroundColor=`${getcolor()}`
+           // divs.style.position=`absolute`
+            // divs.style.top=`${getrandom(0,200)}px`
+            // divs.style.left=`${getrandom(0,200)}px`
+            divs.addEventListener('mousedown',function(){
+                test2()
+            })
+        }
+        
+       
+
+        //adddiv()
+        function howdiv(){
+            for(let i=1;i<=5;i++){
+                adddiv()
+                test2()
+            }
+           // console.log(tmp)
+        }
+        howdiv()
+       
+        
+       
+       
+    </script>
+</body>
+</html>

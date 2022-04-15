@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .container {
+            width: 600px;
+            margin: 100px auto;
+        }
+
+        .container ul {
+            
+            width: 100%;
+            display: flex;
+        }
+
+        .container ul li {
+            width: 25%;
+            height: 110px;
+            line-height: 40px;
+            text-align: center;
+            /* border: 1px solid black; */
+            padding: 20px;
+        }
+
+        .container ul li img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .container ol {
+            width: 600px;
+            height: 400px;
+            font-size: 28px;
+            position: relative;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background: pink;
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            display: none;
+        }
+
+        .container ol li {
+            width: 600px;
+            height: 400px;
+            text-align: center;
+            line-height: 300px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+
+        }
+
+        .container ol li img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .container ul .active {
+            border: 1px solid blue;
+            opacity: 0.5;
+        }
+        .container ol .on {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="tab1">
+        <ol>
+            <li class="on"><img src="./img/show_1.jpg" alt=""></li>
+            <li><img src="./img/show_2.jpg" alt=""></li>
+            <li><img src="./img/show_3.jpg" alt=""></li>
+            <li><img src="./img/show_4.jpg" alt=""></li>
+            <div class="box"></div>
+        </ol>
+        <ul>
+            <li class="active" data-index="0"><img src="./img/small_1.jpg" alt=""></li>
+            <li data-index="1"><img src="./img/small_2.jpg"  alt=""></li>
+            <li data-index="2"><img src="./img/small_3.jpg"  alt=""></li>
+            <li data-index="3"><img src="./img/small_4.jpg"  alt=""></li>
+        </ul>
+    </div>
+   <script src="./js/index.js"></script>
+</body>
+
+</html>

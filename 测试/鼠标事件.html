@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>方块跟随鼠标移动</title>
+    <style type="text/css">
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            position: absolute;
+            
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var divBox = document.getElementById("box1");
+            document.onmousemove = function (event) {
+                //首先获取鼠标的坐标
+                event = event || window.event;//兼容IE8以下的版本
+                x = event.clientX;
+                y = event.clientY;
+
+
+                //方块的坐标等于鼠标的坐标再加上滚动条滚动的距离
+                divBox.style.top = y  + "px";
+                divBox.style.left = x  + "px";
+            }
+        }
+    </script>
+</head>
+<body style="height: 1000px;width: 2000px;">
+<div id="box1"></div>
+</body>
+</html>

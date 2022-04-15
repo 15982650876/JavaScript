@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //  1. 查找商品数组中id为1002的商品
+    // 2. 计算商品数组中所有商品总价
+    // 3. 查找商品名为'css高级编程'的商品，将数量num加一
+    // 4. 判断商品数组中是否有id为1003的商品，如果存在将数量加一,如果不存在创建一个新商品，属性自定义，存入数组并遍历显示
+         let productList = [
+                        {
+                            id: 1001,               //商品序号
+                            name: 'js高级编程',      //商品名
+                            url: 'https://img1.baidu.com=JPEG', //商品图片
+                            price: 68.90,           //商品价格
+                            num: 0,                 //商品数量
+                            singlePrice: 200,         //商品总价=数量*价格    
+                        },
+                        {
+                            id: 1002,
+                            name: 'css高级编程',
+                            url: 'https://img1.baidu.com/it/u=337910016,91561566&fm=26&fmt=auto',
+                            price: 55.89,
+                            num: 0,
+                            singlePrice: 100,
+                        },
+                        {
+                            id: 1003,
+                            name: 'html高级编程',
+                            url: 'https://img1.baidu.com/it/u=337910016,91561566&fm=26&fmt=auto',
+                            price: 45.89,
+                            num: 0,
+                            singlePrice: 300,
+                        }
+                    ]
+       function test1(){
+        productList.forEach(item=>{
+                if(item.id==1002){
+                    console.log(item)
+                }
+            })
+       }
+       function test2(){
+        var sum= productList.reduce((s,item)=>{
+            return s+item.singlePrice
+            })
+            console.log(sum)
+       }
+       function test3(){  
+        productList.forEach(item=>{
+           if(item.name=='css高级编程')
+            item.num+=1
+            console.log(item)
+            })
+            
+       }
+       function test4(){  
+      productList.some(item=>{
+
+            if(item.id==1003){
+                   item.num+=1
+            console.log(item) 
+            }
+
+            else{
+            var obj={
+                    id: 1001,               //商品序号
+                            name: 'js高级编程',      //商品名
+                            url: 'https://img1.baidu.com=JPEG', //商品图片
+                            price: 68.90,           //商品价格
+                            num: 0,                 //商品数量
+                            singlePrice: 200,         //商品总价=数量*价格    
+                   }
+                productList.push(obj)
+                console.log(productList)
+          }
+        }
+       )}  
+        test4()
+    </script>
+</body>
+</html>

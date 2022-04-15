@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <audio src="" controls autoplay loop></audio>
+    <p></p>
+    <script>
+        let xhr=new window.XMLHttpRequest()
+        let audio=document.querySelector('audio')
+        let peml=document.querySelector('p')
+        //   xhr.open('get','http://localhost:3000/login/cellphone?phone=15982650876&password=cst43993721')
+        //  xhr.open('get','http://localhost:3000/search?keywords=孤勇者')
+        xhr.open('get','http://localhost:3000/yunbei/sign')
+        xhr.send()
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState==4){
+                if(xhr.status==200){
+                   let date=xhr.responseText
+                   let dates=JSON.parse(date)
+                  console.log(dates)
+                 // console.log(dates.result.songs)
+                   
+                //    let songid=dates.result.songs[0].id
+                //    audio.src=`https://music.163.com/song/media/outer/url?id=${songid}.mp3`
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

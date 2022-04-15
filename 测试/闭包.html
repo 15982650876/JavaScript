@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //        定义一个人类Person，有姓名name,性别sex属性，有吃饭eat方法
+    // 定义一个驾驶员类Driver，有驾龄driverTime属性,有驾驶开车方法 onOpenCar
+    // 定义一个老师类Teacher, 有教龄teachTime属性，有教学上课方法 onTeache
+
+    // 要求: 驾驶员和老师继承人类,
+    //       实例化名为 张三性别为男的驾驶员，调用其开车功能，
+    //       实例化名为 zhousir性别为男的讲师，调用其上课功能
+    //person类
+    class person {
+        constructor(name,sex){
+            this.name=name
+            this.sex=sex
+
+        }
+        eat(){
+
+        }
+    }
+    //驾驶员类
+    class driver extends person{
+        constructor(name,sex,driverTime){
+            super(name,sex)
+            this.name=name
+            this.sex=sex
+         
+            this.driverTime=driverTime
+        }
+        onOpenCar(){
+            console.log(this.name+`性别`+this.sex+`正在开车`)
+        }
+    }
+    //老师类
+    class teacher extends person{
+        constructor(name,sex,teacherTime){ 
+            super(name,sex)
+            this.name=name
+            this.sex=sex
+        }
+        onTeache(){
+            console.log(this.name+`性别`+this.sex+`正在上课`)
+
+        }
+
+    }
+    let zhangsan=new driver('张三','男')
+    zhangsan.onOpenCar()
+    let zhousir=new teacher('周sir','男')
+    zhousir.onTeache()
+    </script>
+</body>
+</html>

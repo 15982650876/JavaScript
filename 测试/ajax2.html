@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            width: 500px;
+            line-height: 60px;
+            margin: 5px auto;
+            border: 1px solid gray;
+            padding: 10px;
+            text-align: center;
+        }
+
+        form input {
+            width: 100%;
+            height: 40px;
+        }
+
+        form button {
+            width: 200px;
+            height: 40px;
+            background-color: skyblue;
+            text-align: center;
+            line-height: 40px;
+            border: none;
+            outline: none;
+        }
+
+        form button:hover {
+            background-color: #f7c7cf;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cart-add">
+        <form action="" method="post">
+            <input type="text" name="name" placeholder="请输入用戶名"><br>
+            <input type="password" name="password" placeholder="请输入密碼"><br>
+            <button class="btn">登录</button>
+
+        </form>
+    </div>
+    <script src="./Ajax.js"></script>
+    <script src="./js.cookie.js"></script>
+    <script>
+        let user1 = document.querySelector('input[name="name"]')
+        let password = document.querySelector('input[name="password"]')
+        let btn = document.querySelector('.btn')
+        //      function denglu(){
+        //         let xhr = new window.XMLHttpRequest()
+        //         xhr.open('post', "http://localhost:8088/api/login")
+        //          xhr.setRequestHeader('content-type','application/x-www-form-urlencoded')
+        //          console.log(user.value,password.value)
+        //         xhr.send(`username=${user.value}&password=${password.value}`)
+        //         xhr.onreadystatechange=function(){
+        //             if(xhr.readyState==4){
+        //                 if(xhr.status==200){
+        //                     let date=xhr.responseText
+        //                     localStorage.setItem('user',date)
+        //                     location.href='indexajax.html'
+        //                 }
+        //             }
+        //      }
+
+        //  }
+
+        btn.addEventListener('click', async function (e) {
+            e.preventDefault()
+            let data = await myPromise({
+                method: 'post',
+                date: {
+                    username: user1.value,
+                    password: password.value
+                },
+                url: 'http://10.7.178.115:8088/api/login'
+            })
+            console.log(data)
+            if (data.resultCode== 1) {
+                Cookies.set('user', `${data.resultInfo.username}`, {
+                    expires: 7
+                });
+                Cookies.set('password', `${data.resultInfo.password}`, {
+                    expires: 7
+                });
+                 location.href = 'indexajax.html'
+            }
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!-- 
+    已知学生成绩数组为[98,86,79,68,90,82]
+        使用冒泡排序将学生成绩按由大到小排序输出?
+        使用选择排序将学生成绩按由大到小排序输出?
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排序算法</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * 冒泡排序
+         *  由大到小
+        */
+        function sort1() {
+            var arr = [98, 86, 79, 68, 90, 82]
+            let n = arr.length
+            //外层循环,n-1次冒泡
+            for (var i = 0; i < n - 1; i++) {
+                //内层循环, 相邻两个数两两比较，如果后面的数比前面的大，交换位置
+                for (var j = 0; j < n - 1 - i; j++) {
+                    if (arr[j] < arr[j + 1]) {
+                        var temp = arr[j]
+                        arr[j] = arr[j + 1]
+                        arr[j + 1] = temp
+                    }
+                }
+                console.log(arr);
+            }
+
+
+            console.log(arr);
+        }
+         sort1()
+        /**
+         * 选择排序
+         * 由大到小
+        */
+        function sort2() {
+            var arr = [86, 79, 98, 68, 90, 82]
+            var n = arr.length
+            //外层循环，n个数进行n-1次选择排序
+            for (var j = 0; j < n - 1; j++) {
+                //内层循环
+                //核心思想: 在未排序的数中找最大数索引号,与未排序的第一个交换位置
+                var maxIndex = j //最大数索引号 j:0
+                for (var i = j + 1; i < n; i++) {
+                    if (arr[i] > arr[maxIndex]) {
+                        maxIndex = i //maxIndex: 2
+                    }
+                }
+
+                //交换位置
+                var temp = arr[j]
+                arr[j] = arr[maxIndex]
+                arr[maxIndex] = temp
+
+                console.log(arr);
+            }
+        }
+        sort2()
+
+    </script>
+</body>
+
+</html>

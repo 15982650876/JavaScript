@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 230px;
+            margin: auto;
+            text-align: center;
+        
+        }
+        input{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        button{
+            width: 230px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <form action="https://www.jd.com/">
+       账号：<input type="text">
+       密码：<input type="password">
+        <button type="submit">确定</button>
+    </form>
+    </div>
+    <script>
+        function test(){
+            let sub=document.querySelector('form')
+            sub.onsubmit=function(e){
+                e.preventDefault()
+                let inputs=document.querySelectorAll('input')
+           // console.log(inputs)
+                if(inputs[0].value==''){
+                    alert('账号空')
+                    return false
+                }
+                  else if(inputs[1].value==''){
+                    alert('密码空')
+                    return false
+                }
+                else
+                location.href="https://www.jd.com?456"
+            }
+        }
+        test()
+
+    </script>
+   
+</body>
+</html>

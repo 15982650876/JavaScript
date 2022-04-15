@@ -1,0 +1,67 @@
+<!-- 
+    1.统计字符串中不同字符的出现次数?
+      如: 'abcdefabcadefkmmkggcc' 
+         'a'字符 出现 2次
+         'b'字符 出现 2次
+         'c'字符 出现 4次
+         'd'字符 出现 1次
+         'e'字符 出现 2次
+             ...
+      提示: 定义一个简单对象用于计数,对象属性表示字符,对象值表示次数
+            {a:2,b:2,c:4,d:1,e:2,...}
+            obj.a = 1
+               => 1. 给对象属性a赋值1
+               => 2. 如果对象属性a不存在，先创建属性a,再赋值1
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+ </head>
+ <body>
+   <script>
+     var stu='abcdefabcadefkmmkggccaafAAAAACSDFSFSDFDASZDhtufgiuhuesnfndfh8quy8937jfjskjelhfe'
+     var newstu=''                                                          
+     var js={}
+     var k=0;
+    //  for(let i=65;i<91;i++)
+    // {
+    //    newstu+=String.fromCharCode(i)
+    //    newstu=newstu.toLowerCase()
+    // }
+    // for(let i=0;i<26;i++){
+    //   k=0
+    //   for(let j=0;j<stu.length;j++){
+    //     if(stu[j]==newstu[i]){
+    //      // console.log(newstu[i])
+    //       k++;
+    //       js[newstu[i]] = k;
+         
+    //     }
+    //   }
+    // } console.log(js)
+    for(i = 0; i < stu.length; i++)
+	{
+		 let key = stu[i];
+ 
+		if(js[key])
+		{
+			
+			js[key]++;
+		}
+		else
+		{
+			js[key] = 1;
+		}
+	}
+ 
+	for(var key in js) 
+	{
+		console.log(key+':'+js[key] );
+	}  
+   </script>
+ </body>
+ </html>

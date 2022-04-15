@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         div:nth-child(1){
+            width: 300px;
+            height: 100px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+         div:nth-child(2){
+            width: 100px;
+            height: 400px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+         div:nth-child(3){
+            width: 100px;
+            height: 300px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+         div:nth-child(4){
+            height: 150px;
+            width: 200px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+         div:nth-child(5){
+            height: 150px;
+             width: 200px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        
+        
+    </style>
+</head>
+<body>
+    
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+
+  
+   
+    <script>
+          function getrandom(m,n){
+          let tmp=Math.max(m,n)
+            n=Math.min(m,n)
+            m=tmp
+          return math= Math.random()*(m-n)+n
+        }
+       console.log(getrandom(1,10)) 
+        function getcolor(){
+            let r= getrandom(0,251)
+            let g= getrandom(0,251)
+            let b= getrandom(0,251)
+            return `rgb(${r},${g},${b})`
+        }
+      function test(){
+        let divs=document.querySelectorAll('div')
+        for(let i=0;i<divs.length;i++){
+           divs[i].style.backgroundColor=getcolor()
+        }
+    }
+    function test2(){
+        let divs=document.querySelectorAll('div')
+        for(let i=0;i<divs.length;i++){
+            divs[i].onmousedown=function(){
+                console.log(window.getComputedStyle(divs[i]).width);
+                let a=parseInt(window.getComputedStyle(divs[i]).width)/2
+                let b=parseInt(window.getComputedStyle(divs[i]).height)/2
+                console.log(a,b)
+                document.body.onmousemove=function(e){
+                        e=e||window.event
+                        x = e.clientX-a;
+                        y = e.clientY-b;
+                        divs[i].style.top=`${y}px`
+                        divs[i].style.left=`${x}px`
+                }
+            }
+            divs[i].onmouseup=function(){
+                document.body.onmousemove=null
+            }
+            // divs[i].onmouseout=function(){
+               
+            // }
+
+        }
+        
+    }
+
+
+
+      test()
+      test2()
+    </script>
+</body>
+</html>

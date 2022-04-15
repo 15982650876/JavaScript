@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 300px;
+            height: 400px;
+            margin: auto;
+            text-align: center;
+            background: url(./img/OIP-C13.jpg) no-repeat;
+            background-size: 100%, 100%;
+        }
+
+        input {
+            border: 0px;
+            outline: 0px;
+            border-bottom: 1px solid black;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            opacity: 0.5;
+        }
+
+        button {
+            width: 200px;
+            margin: auto;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+
+        p {
+            font-size: 10px;
+            color: red;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <form action="">
+            账户： <input type="text" name="usename">
+            <p>输入账户</p>
+            密码： <input type="password" name="password">
+            <p>输入密码</p>
+            <p>密码不规范</p>
+            <button type="submit">确定</button>
+        </form>
+        <script>
+            let user = document.querySelector('input[name="usename"]')
+            let paswd = document.querySelector('input[name="password"]')
+            let forms = document.querySelector('form')
+            //验证用户名非空函数
+            function isname() {
+                let ps = document.querySelectorAll('p')
+                if (user.value == '') {
+                    ps[0].style.opacity = '1'
+                    return false
+                } else {
+                    ps[0].style.opacity = '0'
+                    return true
+
+                }
+
+            }
+            //验证密码非空函数
+            function ispwd() {
+                let ps = document.querySelectorAll('p')
+                if (paswd.value == '') {
+                    ps[1].style.opacity = '1'
+                    return false
+                } else {
+                    ps[1].style.opacity = '0'
+                    let reg=/^[A-Z][0-9a-zA-Z]{7,}/
+                  console.log(reg.test(paswd.value));  
+                    if(reg.test(paswd.value)){
+                        return true
+                    }else{
+                        ps[2].style.opacity='1'
+                        return false
+                    }
+                }
+            }
+            //提交函数
+            function tijiao(){
+                if (isname() == true && ispwd() == true) {
+                    location.href="https://www.jd.com?456"
+                }
+                else{
+                    alert('修改')
+                }
+                
+            }
+            //按键事件
+                function keycode(){
+                    document.onkeyup=function(e){
+                        e=e||window.event
+                      // console.log(e.keyCode)
+                        if(e.keyCode=='32'){
+                          tijiao()
+                        }
+                    }
+                }
+             keycode()
+            user.addEventListener('blur', function(){
+                isname()
+            }) //验证用户名
+            paswd.addEventListener('blur', function(){
+                ispwd()
+            }) //验证密码
+            forms.addEventListener('submit', function (e) {
+                e.preventDefault()
+                tijiao()
+              
+            })
+        </script>
+
+    </div>
+</body>
+
+</html>

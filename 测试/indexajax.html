@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主界面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+
+        .user {
+            display: flex;
+            justify-content: space-between;
+            width: 200px;
+            height: 100px;
+            text-align: center;
+            opacity: 0.5;
+            line-height: 80px;
+        }
+
+        img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        .list {
+            width: 1000px;
+           
+            float: right;
+            /* background-color: pink; */
+            /* display: none; */
+            overflow: auto;
+            background-color: rgb(247, 247, 247);
+        }
+
+        .list th,
+        td {
+            width: 200px;
+            text-align: center;
+            border-bottom: dotted 1px black;
+        }
+
+        .list th {
+            line-height: 80px;
+        }
+
+        a {
+            color: black;
+        }
+
+        .leftnav {
+            width: 200px;
+            /* background-color: blue;    */
+            float: left;
+            position: sticky;
+            top: 0px;
+            left: 0px;
+            margin: 10px auto;
+        }
+
+        .leftnav ul {
+            width: 200px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .leftnav ul li {
+            width: 150px;
+            line-height: 100px;
+            /* background-color: skyblue; */
+            list-style: none;
+            cursor: pointer;
+            border-bottom: 1px solid #000;
+            margin: auto;
+        }
+
+        .containei {
+            width: 1200px;
+            margin: auto;
+            /* border: 1px solid #000; */
+            overflow: hidden;
+            position: relative;
+        }
+
+        form {
+            width: 500px;
+            line-height: 60px;
+            margin: 5px auto;
+            /* border: 1px solid gray; */
+            padding: 10px;
+            text-align: center;
+        }
+
+        form input {
+            width: 100%;
+            height: 40px;
+        }
+
+        form input[name="sex"] {
+            width: 20px;
+            height: 20px;
+        }
+
+        form button {
+            margin-top: 20px;
+            width: 200px;
+            height: 40px;
+            background-color: pink;
+            text-align: center;
+            line-height: 40px;
+            border: none;
+            outline: none;
+        }
+
+        form button:hover {
+            background-color: #f7c7cf;
+            cursor: pointer;
+        }
+
+        select {
+            width: 100%;
+            height: 20px;
+        }
+
+        .readimg {
+            width: 1000px;
+            height: 500px;
+            border-radius: 0%;
+        }
+
+        .heard {
+            width: 1200px;
+            margin: auto;
+            position: relative;
+            background-color: pink;
+            /* margin-bottom:30px ; */
+        }
+
+        .containei>.heard>button {
+            position: absolute;
+            right: 10%;
+            top: 40%;
+            width: 60px;
+            height: 40px;
+            background-color: #fff;
+            opacity: 0.5;
+            border: 0;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <script src="./Ajax.js"></script>
+    <div class="containei">
+        <div class="heard">
+            <div class="user">
+                <!-- 动态渲染登录信息 -->
+            </div>
+            <button>退出</button>
+        </div>
+
+        <div class="leftnav">
+
+            <ul>
+                <li class="lilist"> 用户列表</li>
+                <li class="liadd"> 添加用户 </li>
+                <li>修改用户</li>
+                <li>查询用户</li>
+            </ul>
+
+        </div>
+        <div class="list ">
+            <img class="readimg"
+                src="https://desk-fd.zol-img.com.cn/t_s640x530c5/g5/M00/0A/07/ChMkJ13NG5eIFcaSAALAUrFQbxQAAvPHAMKPnYAAsBq465.jpg">
+            <!-- 渲染访客信息 -->
+            <!-- 添加用户 -->
+        </div>
+
+
+
+
+    </div>
+    <script src="Ajax.js"></script>
+    <script>
+        //登录
+        function getUserInfo() {
+            let userStr = localStorage.getItem('user') //从localStorage获取用户信息
+            let user = JSON.parse(userStr)
+            //  console.log(user)
+            //动态渲染用户信息到页面
+            let str = `
+            <h2>欢迎</h2>
+            <p>${user.resultInfo.nick}</p>
+                        <img src="${user.resultInfo.headerimg}" alt="">`
+            const userEle = document.querySelector('.user')
+            userEle.innerHTML = str
+        }
+        getUserInfo()
+        //左侧导航栏
+        function fletnav() {
+            let nav = document.querySelector('.leftnav')
+            nav.addEventListener('click', function (e) {
+                e = e || window.event
+                let target = e.target || e.srcElement
+                if (target.getAttribute('class') == 'lilist') {
+                    user1.ajax()
+                }
+                if (target.getAttribute('class') == 'liadd') {
+                    showadduser()
+                    adduser()
+                }
+            })
+
+        }
+        fletnav()
+        //渲染函数
+        let user1 = new user({
+            method: 'get',
+            url: 'http://10.7.178.115:8088/api/list',
+            date: {},
+            success: function (date) {
+                getlist(date)
+            },
+            error: function (err) {
+                console.log('登录失败')
+
+            }
+        })
+
+
+        //渲染用户列表
+        function getlist(date) { 
+            
+            let list = date.length ==1?[]:date
+
+            let listdiv = document.querySelector('.list')
+            let str = ` <table border="0.5" cellspacing="0" cellpadding="10">
+            <tr>
+                <th>姓名</th>
+                <th>头像</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>company</th>
+                <th>education</th>
+                <th>visitgoal</th>
+                <th>操作</th>
+            </tr>
+            `
+            list.forEach(list => {
+                let tmp = `
+            <tr>
+                <td>
+                    ${list.username}
+                </td>
+                <td>
+                    <img src="${list.headerimg}" alt="">
+                </td>
+                <td>
+                    ${list.age}
+                </td>
+                <td>
+                    ${list.sex?'男':'女'}
+                </td>
+                <td>
+                    ${list.company}
+                </td>
+                <td>
+                    ${list.education}
+                </td>
+                <td>
+                    ${list.visitgoal}
+                </td>
+
+                <td>
+                    <a href="#" dateid=${list.uid}>删除</a>
+                </td>
+            </tr>`
+                str += tmp
+            });
+            str += `</tabel>`
+            listdiv.innerHTML = str
+        }
+        //渲染添加用户表单
+        function showadduser() {
+            let str = `<form>
+                <input type="text" name="name" placeholder="请输入用户名"><br>
+                <input type="text" name="age" placeholder="请输入年龄"><br>
+                <input type="text" name="headerimg" placeholder="请输入头像图片地址"><br>
+                <select name="sex" id="">
+                    <option value="0">男</option>
+                    <option value="1">女</option>
+                </select><br>
+                <button class="userbtn"> 添加</button>
+            </form>`
+            let addusereml = document.querySelector('.list')
+            addusereml.innerHTML = str
+        }
+
+        //删除用户函数
+        function shangchu() {
+            let diveml = document.querySelector('.list')
+            diveml.addEventListener('click', function (e) {
+                e = e || window.event
+                e.preventDefault()
+                let target = e.target || e.srcElement
+                if (target.getAttribute('href') == '#') {
+                    let id = Number(target.getAttribute('dateid'))
+                    console.log(id)
+                    //删除
+                    let user2 = new user({
+                        method: 'get',
+                        url: `http://10.7.178.115:8088/api/delete`,
+                        date: {
+                            uid: id
+                        },
+                        success: function (date) {
+                            user1.ajax()
+                            alert('删除成功')
+                        },
+                        error: function (err) {
+                            console.log('失败')
+                        }
+                    })
+                    user2.ajax()
+                }
+            })
+        }
+        shangchu()
+        //添加用户
+        function adduser() {
+            let userEle = document.querySelector('input[name="name"]')
+            let ageEle = document.querySelector('input[name="age"]')
+            let headEle = document.querySelector('input[name="headerimg"]')
+            let sexele = document.querySelector('select')
+            let diveml = document.querySelector('form')
+            diveml.addEventListener('click', function (e) {
+                e = e || window.event
+                e.preventDefault()
+                let target = e.target || e.srcElement
+                if (target.getAttribute('class') == 'userbtn') {
+                    let username = userEle.value
+                    let age = ageEle.value
+                    let headerimg = headEle.value
+                    let sex = sexele.value
+                    console.log(username)
+                    let user3 = new user({
+                        method: 'post',
+                        url: 'http://10.7.178.115:8088/api/user/add',
+                        date: {
+                            username: username,
+                            age: age,
+                            headerimg: headerimg,
+                            sex: sex,
+                            education: '别删我',
+                            company: '⭐⭐⭐⭐⭐'
+                        },
+                        success: function (date) {
+                            user1.ajax()
+                            alert('添加成功')
+                        },
+                        error: function (err) {
+                            console.log('失败')
+                        }
+                    })
+                    user3.ajax()
+                }
+            })
+        }
+
+        //测试有多少人在线
+        function test() {
+            let a = []
+            for (let i = 10; i < 200; i++) {
+                myPromise({
+                    method: 'get',
+                    url: `http://10.7.178.${i}:8088/api/list`,
+                    date: {}
+                }).then(date => {
+                    let b = `10.7.178.${i}(${date.resultInfo.length})`
+                    a.push(b)
+                }).catch(error => {
+
+                })
+
+            }
+            console.log(a)
+        }
+        test()
+    </script>
+</body>
+
+</html>

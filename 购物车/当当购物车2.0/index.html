@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>当当购物车</title>
+    <link rel="stylesheet" href="./css/cart.css">
+    <style>
+        .cart-list img{
+            width: 100px;
+            height: 80px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="./image/dd_logo.jpg" alt="logo">
+        </div>
+        <div class="cart-list">
+            <table>
+                <!-- <tr>
+                    <th>商品图片</th>
+                    <th>商品信息</th>
+                    <th>商价</th>
+                    <th>数量</th>
+                    <th>总价</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                    <td><img src="./image/shoppingBg_03.jpg" alt=""></td>
+                    <td class="name">javascript高级编程</td>
+                    <td class="zj">￥68.90</td>
+                    <td><input type="button" name="minus" value="-" >
+                         <input type="text" name="amount" value="0">
+                        <input type="button" name="plus" value="+"></td>
+                    <td style="width: 100PX;"class="jg">￥0</td>
+                    <td> <a href="#">移入收藏</a><br><a class="sub" href="#">删除</a></td>
+                </tr>
+                <tr>
+                    <td><img src="./image/shoppingBg_06.jpg" alt=""></td>
+                    <td class="name">css高级编程</td>
+                    <td class="zj">￥58.90</td>
+                    <td><input type="button" name="minus" value="-">
+                        <input type="text" name="amount" value="0">
+                        <input type="button" name="plus" value="+"></td>
+                    <td class="jg">￥0</td>
+                    <td> <a href="#">移入收藏</a><br><a class="sub" href="#">删除</a></td>
+                </tr> -->
+            </table>
+            <h2>商品总价:<span>￥0</span></h2>
+        </div>
+        <div class="cart-add">
+            <form action="">
+                <input type="text" name="name" placeholder="请输入商品名称"><br>
+                <input type="text" name="price" placeholder="请输入商品价格"><br>
+                <input type="text" name="num" placeholder="请输入商品数量"><br>
+                <input type="text" name="url" placeholder="请输入商品图片地址"><br>
+                <button class="add-btn">添加商品</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
